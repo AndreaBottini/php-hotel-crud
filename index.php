@@ -2,6 +2,12 @@
 include __DIR__ .'/server.php';
 include __DIR__ .'/partials/header.php';
 ?>
+
+<?php if(!empty($_GET['roomNumber'])) { ?>
+     <div class="alert alert-danger">
+         Hai cancellato la stanza ID: <?php echo $_GET['roomNumber']?>
+     </div>
+<?php } ?>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -25,7 +31,12 @@ include __DIR__ .'/partials/header.php';
                                 <td><?php echo $room['floor']?></td>
                                 <td><a href="show/show.php?id=<?php echo $room['id']?>">VIEW</a></td>
                                 <td><a href="">UPDATE</a></td>
-                                <td>DELETE</td>
+                                <td>
+                                <form action="delete/server.php" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $room['id']?>">
+                                    <input class="btn btn-danger"type="submit" value="DELETE">
+                                </form>
+                                </td>
                             </tr>
                             <?php }
                             }
