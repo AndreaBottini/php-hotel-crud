@@ -36,7 +36,7 @@ if ($result && $result->num_rows > 0) {
     }
 
 //3. Effettuo la chiamata per modificare i dati. Inserimeno i dati passati come POST delle variabili dichiarate precedentemente.   
-    $sql = "UPDATE `stanze` SET `room_number` = $roomNumber, `beds` = $beds, `floor` = $floor WHERE id = $roomId";
+    $sql = "UPDATE `stanze` SET `room_number` = $roomNumber, `beds` = $beds, `floor` = $floor, `updated_at` = NOW() WHERE id = $roomId";
 
 //4. Utilizzo la query.
 $result = $conn->query($sql);
